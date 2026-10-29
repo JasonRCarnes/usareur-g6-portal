@@ -1,0 +1,38 @@
+
+{
+  "schemaVersion": 1,
+  "contentOwner": "CIO/G6-designated knowledge governance lead — designation pending",
+  "reviewCycleDays": 90,
+  "sources": [
+    {
+      "id": "SAMPLE-GOV-001",
+      "title": "Approved CIO/G6 governance guidance",
+      "owner": "Designated governance functional lead",
+      "version": "Not supplied",
+      "effectiveDate": null,
+      "reviewDate": null,
+      "reviewCycleDays": 90,
+      "applicability": "To be confirmed by source owner",
+      "authorityStatus": "pending-review",
+      "approved": false,
+      "approvedForAI": false,
+      "content": "",
+      "reviewNotes": "Placeholder only. Replace with an approved source record."
+    },
+    {
+      "id": "SAMPLE-ARCH-001",
+      "title": "Approved enterprise architecture references",
+      "owner": "Designated architecture functional lead",
+      "version": "Not supplied",
+      "effectiveDate": null,
+      "reviewDate": null,
+      "reviewCycleDays": 90,
+      "applicability": "To be confirmed by source owner",
+      "authorityStatus": "pending-review",
+      "approved": false,
+      "approvedForAI": false,
+      "content": "",
+      "reviewNotes": "Placeholder only. Replace with an approved source record."
+    }
+  ]
+}
