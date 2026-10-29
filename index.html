@@ -108,6 +108,34 @@
                         </div>
                         <span id="response-badge" class="text-xs text-slate-400 font-mono">Routing match: 100%</span>
                     </div>
+                    
+<div class="mb-3 flex items-center justify-between gap-2">
+    <span class="text-xs text-slate-400">
+        Advisory workspace · Current session only
+    </span>
+    <button
+        id="clear-chat-button"
+        type="button"
+        class="text-xs text-slate-300 hover:text-white border border-slate-600 rounded px-2 py-1">
+        Clear conversation
+    </button>
+</div>
+
+<div
+    id="chat-history"
+    role="log"
+    aria-live="polite"
+    aria-label="Advisor conversation"
+    class="space-y-3 mb-4">
+</div>
+
+<div
+    id="advisor-status"
+    class="text-xs text-slate-400"
+    role="status">
+    Responses are advisory and require human review.
+</div>
+
                     <div id="ai-response-text" class="leading-relaxed space-y-2">
                         <!-- Dynamic AI response loaded here -->
                     </div>
