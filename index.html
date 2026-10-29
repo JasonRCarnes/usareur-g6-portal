@@ -1,0 +1,406 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta name="description" content="USAREUR-AF G6 Practical Operational Guidance, Utilities, and AI Directory Portal">
+    <title>USAREUR-AF G6 | Tactical & Enterprise Practical Utilities</title>
+    <!-- Tailwind CSS CDN -->
+    <script src="https://cdn.tailwindcss.com"></script>
+    <style>
+        .classification-banner {
+            background-color: #007a3d; /* DoD Green for UNCLASSIFIED // CUI */
+            color: #ffffff;
+            font-weight: 700;
+            text-align: center;
+            font-size: 0.8rem;
+            letter-spacing: 0.1em;
+            padding: 3px 0;
+        }
+        .chat-bubble-ai {
+            background-color: #1e293b;
+            border-left: 3px solid #3b82f6;
+        }
+    </style>
+</head>
+<body class="bg-slate-900 text-slate-100 font-sans antialiased min-h-screen flex flex-col justify-between">
+
+    <!-- Top Security Classification Banner -->
+    <div class="classification-banner sticky top-0 z-50">
+        UNCLASSIFIED // CONTROLLED UNCLASSIFIED INFORMATION (CUI)
+    </div>
+
+    <!-- USG Warning Banner -->
+    <aside aria-label="System Notice" class="bg-amber-950 border-b border-amber-800 text-amber-200 px-4 py-1.5 text-xs flex justify-between items-center">
+        <span><strong>USG NOTICE:</strong> USAREUR-AF Information System. Authorized use only. Monitored per DoDI 8500.01.</span>
+        <span class="text-amber-300 font-mono hidden sm:inline">24/7 G6 OPS DESK: DSN 314-537-1110</span>
+    </aside>
+
+    <!-- Header Navigation -->
+    <header class="bg-slate-800 border-b border-slate-700 shadow-md">
+        <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 py-3.5 flex items-center justify-between">
+            <div class="flex items-center space-x-3">
+                <div class="w-10 h-10 bg-blue-800 border-2 border-blue-400 rounded-lg flex items-center justify-center font-bold text-lg text-white shadow">
+                    G6
+                </div>
+                <div>
+                    <h1 class="text-lg font-bold tracking-wide uppercase text-white">USAREUR-AF G6 Directorate</h1>
+                    <p class="text-xs text-slate-400">Practical Operational Tools • C4 Systems, Cyber Defense & Mission Support</p>
+                </div>
+            </div>
+            <div class="flex items-center space-x-4">
+                <span class="inline-flex items-center px-2.5 py-1 rounded text-xs font-semibold bg-emerald-950 text-emerald-300 border border-emerald-800">
+                    ● Theater Systems: GREEN
+                </span>
+                <span class="text-xs text-slate-400 hidden md:inline">Lucius D. Clay Kaserne, Wiesbaden</span>
+            </div>
+        </div>
+    </header>
+
+    <!-- Main Content Area -->
+    <main class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 py-6 flex-grow space-y-6">
+
+        <!-- HERO / PRACTICAL AI GUIDANCE SEARCH -->
+        <section class="bg-gradient-to-r from-blue-950 via-slate-800 to-indigo-950 border border-blue-700/50 rounded-xl p-6 shadow-xl">
+            <div class="max-w-3xl mx-auto text-center space-y-3">
+                <span class="inline-block px-3 py-1 bg-blue-900/80 text-blue-300 border border-blue-600 rounded-full text-xs font-semibold uppercase tracking-wider">
+                    Practical G6 Mission Guidance Engine
+                </span>
+                <h2 class="text-2xl sm:text-3xl font-extrabold text-white">How Can USAREUR-AF G6 Help Your Unit Today?</h2>
+                <p class="text-sm text-slate-300">
+                    Get instant step-by-step guidance on SAR/GAR satellite windows, SIPR/NIPR account tokens, classified spillage containment, or submitting firewall PPSM exemptions.
+                </p>
+
+                <!-- Search Input Field -->
+                <div class="relative mt-4">
+                    <input 
+                        type="text" 
+                        id="ai-query-input" 
+                        placeholder="Ask anything practical (e.g., 'How do I request a SATCOM window?', 'Reset SIPR token', 'Spillage action plan')..." 
+                        class="w-full bg-slate-900/90 text-white placeholder-slate-400 text-sm rounded-lg pl-4 pr-24 py-3.5 border border-slate-600 focus:outline-none focus:border-blue-400 focus:ring-2 focus:ring-blue-500 shadow-inner"
+                        onkeydown="if(event.key === 'Enter') handleUserQuery()"
+                    >
+                    <button 
+                        onclick="handleUserQuery()"
+                        class="absolute right-2 top-2 bg-blue-600 hover:bg-blue-500 text-white text-xs font-bold px-4 py-2 rounded-md transition-colors shadow">
+                        Find Answer
+                    </button>
+                </div>
+
+                <!-- Instant Practical Quick Action Chips -->
+                <div class="flex flex-wrap items-center justify-center gap-2 pt-2 text-xs">
+                    <span class="text-slate-400 font-semibold">Common Requests:</span>
+                    <button onclick="fillQuery('How do I submit an emergency SAR/GAR for satellite bandwidth?')" class="bg-slate-800 hover:bg-slate-700 border border-slate-600 rounded px-2.5 py-1 text-slate-300">🛰️ Request SATCOM</button>
+                    <button onclick="fillQuery('Who do I contact for classified spillage or cyber incident?')" class="bg-slate-800 hover:bg-slate-700 border border-red-700/60 rounded px-2.5 py-1 text-red-300">🚨 Spillage Action Plan</button>
+                    <button onclick="fillQuery('How do I open a firewall port via PPSM?')" class="bg-slate-800 hover:bg-slate-700 border border-slate-600 rounded px-2.5 py-1 text-slate-300">🛡️ Open Firewall Port</button>
+                    <button onclick="fillQuery('Where do I request tactical COMSEC crypto keys?')" class="bg-slate-800 hover:bg-slate-700 border border-slate-600 rounded px-2.5 py-1 text-slate-300">🔑 Request Crypto Keys</button>
+                    <button onclick="fillQuery('Where do I request SIPRNet or NIPRNet account access?')" class="bg-slate-800 hover:bg-slate-700 border border-slate-600 rounded px-2.5 py-1 text-slate-300">💻 SIPR/NIPR Account</button>
+                </div>
+            </div>
+
+            <!-- Interactive AI Answer Display Box -->
+            <div id="ai-response-container" class="mt-6 max-w-3xl mx-auto hidden">
+                <div class="chat-bubble-ai rounded-lg p-4 text-sm text-slate-200 shadow-md">
+                    <div class="flex items-center justify-between border-b border-slate-700 pb-2 mb-2">
+                        <div class="flex items-center space-x-2">
+                            <span class="w-2 h-2 rounded-full bg-blue-400 animate-pulse"></span>
+                            <span class="font-bold text-xs uppercase text-blue-300">G6 Practical Workflow Guide</span>
+                        </div>
+                        <span id="response-badge" class="text-xs text-slate-400 font-mono">Routing match: 100%</span>
+                    </div>
+                    <div id="ai-response-text" class="leading-relaxed space-y-2">
+                        <!-- Dynamic AI response loaded here -->
+                    </div>
+                    <div id="ai-action-buttons" class="mt-3 pt-2 border-t border-slate-700/60 flex flex-wrap gap-2 text-xs">
+                        <!-- Dynamic routing actions loaded here -->
+                    </div>
+                </div>
+            </div>
+        </section>
+
+        <!-- PRACTICAL G6 SELF-SERVICE CAPABILITIES -->
+        <div>
+            <h3 class="text-sm font-bold uppercase tracking-wider text-slate-400 mb-3">Practical G6 Operational Desks & Tools</h3>
+            <div class="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-4 gap-4">
+
+                <!-- Utility 1: SATCOM & Tactical Comms -->
+                <div class="bg-slate-800 border border-slate-700 rounded-lg p-4 flex flex-col justify-between hover:border-blue-500 transition-colors">
+                    <div>
+                        <div class="flex items-center justify-between text-blue-400 mb-2">
+                            <span class="font-bold text-xs font-mono">PRACTICAL C4</span>
+                            <span class="text-base">📡</span>
+                        </div>
+                        <h4 class="text-base font-bold text-white mb-1">SATCOM & Tactical Radios</h4>
+                        <p class="text-xs text-slate-400 mb-3">Submit SAR/GAR requests, acquire Land Mobile Radio (LMR) talkgroups, and reserve Theater HF-ALE / UHF TACSAT allocations.</p>
+                    </div>
+                    <div class="space-y-2 border-t border-slate-700 pt-3">
+                        <button onclick="fillQuery('How do I submit an emergency SAR/GAR for satellite bandwidth?')" class="w-full text-left bg-slate-900/60 hover:bg-slate-900 text-blue-300 rounded px-2.5 py-1.5 text-xs flex justify-between items-center border border-slate-700">
+                            <span>Submit SAR/GAR Request</span>
+                            <span>→</span>
+                        </button>
+                        <button onclick="fillQuery('Where do I request tactical COMSEC crypto keys?')" class="w-full text-left bg-slate-900/60 hover:bg-slate-900 text-blue-300 rounded px-2.5 py-1.5 text-xs flex justify-between items-center border border-slate-700">
+                            <span>Crypto / KMI Key Issuance</span>
+                            <span>→</span>
+                        </button>
+                    </div>
+                </div>
+
+                <!-- Utility 2: Cyber Defense & Incident Help -->
+                <div class="bg-slate-800 border border-slate-700 rounded-lg p-4 flex flex-col justify-between hover:border-red-500 transition-colors">
+                    <div>
+                        <div class="flex items-center justify-between text-red-400 mb-2">
+                            <span class="font-bold text-xs font-mono">EMERGENCY CSOC</span>
+                            <span class="text-base">🚨</span>
+                        </div>
+                        <h4 class="text-base font-bold text-white mb-1">Cyber Incident & Spillage</h4>
+                        <p class="text-xs text-slate-400 mb-3">Mandatory step-by-step procedures to isolate hardware, contain classified data spills, and notify theater incident responders.</p>
+                    </div>
+                    <div class="space-y-2 border-t border-slate-700 pt-3">
+                        <button onclick="fillQuery('Who do I contact for classified spillage or cyber incident?')" class="w-full text-left bg-red-950/40 hover:bg-red-950/70 text-red-300 rounded px-2.5 py-1.5 text-xs flex justify-between items-center border border-red-800/50">
+                            <span>Spill Containment Checklist</span>
+                            <span>🚨</span>
+                        </button>
+                        <button onclick="fillQuery('What is the IAVM vulnerability remediation deadline?')" class="w-full text-left bg-slate-900/60 hover:bg-slate-900 text-slate-300 rounded px-2.5 py-1.5 text-xs flex justify-between items-center border border-slate-700">
+                            <span>Check IAVM Compliance Dates</span>
+                            <span>→</span>
+                        </button>
+                    </div>
+                </div>
+
+                <!-- Utility 3: Network Access & Ports -->
+                <div class="bg-slate-800 border border-slate-700 rounded-lg p-4 flex flex-col justify-between hover:border-emerald-500 transition-colors">
+                    <div>
+                        <div class="flex items-center justify-between text-emerald-400 mb-2">
+                            <span class="font-bold text-xs font-mono">DOORWAY ACCESS</span>
+                            <span class="text-base">🌐</span>
+                        </div>
+                        <h4 class="text-base font-bold text-white mb-1">Accounts & Firewalls</h4>
+                        <p class="text-xs text-slate-400 mb-3">Onboard personnel onto SIPR/NIPR enclaves, request theater VPN access, and file PPSM firewall exemption packages.</p>
+                    </div>
+                    <div class="space-y-2 border-t border-slate-700 pt-3">
+                        <button onclick="fillQuery('Where do I request SIPRNet or NIPRNet account access?')" class="w-full text-left bg-slate-900/60 hover:bg-slate-900 text-emerald-300 rounded px-2.5 py-1.5 text-xs flex justify-between items-center border border-slate-700">
+                            <span>Request User Account Access</span>
+                            <span>→</span>
+                        </button>
+                        <button onclick="fillQuery('How do I open a firewall port via PPSM?')" class="w-full text-left bg-slate-900/60 hover:bg-slate-900 text-emerald-300 rounded px-2.5 py-1.5 text-xs flex justify-between items-center border border-slate-700">
+                            <span>PPSM Firewall Exemption</span>
+                            <span>→</span>
+                        </button>
+                    </div>
+                </div>
+
+                <!-- Utility 4: Operational Compliance & CUI -->
+                <div class="bg-slate-800 border border-slate-700 rounded-lg p-4 flex flex-col justify-between hover:border-amber-500 transition-colors">
+                    <div>
+                        <div class="flex items-center justify-between text-amber-400 mb-2">
+                            <span class="font-bold text-xs font-mono">GOVERNANCE</span>
+                            <span class="text-base">📋</span>
+                        </div>
+                        <h4 class="text-base font-bold text-white mb-1">RMF & CUI Guidance</h4>
+                        <p class="text-xs text-slate-400 mb-3">Generate compliant CUI banners for emails/slides, register an eMASS package for ATO, and verify DoD 8140 cyber credentials.</p>
+                    </div>
+                    <div class="space-y-2 border-t border-slate-700 pt-3">
+                        <button onclick="fillQuery('What are the rules for marking CUI?')" class="w-full text-left bg-slate-900/60 hover:bg-slate-900 text-amber-300 rounded px-2.5 py-1.5 text-xs flex justify-between items-center border border-slate-700">
+                            <span>CUI Marking Instructions</span>
+                            <span>→</span>
+                        </button>
+                        <button onclick="fillQuery('What are the steps to register an eMASS package for ATO?')" class="w-full text-left bg-slate-900/60 hover:bg-slate-900 text-amber-300 rounded px-2.5 py-1.5 text-xs flex justify-between items-center border border-slate-700">
+                            <span>eMASS Authorization Checklist</span>
+                            <span>→</span>
+                        </button>
+                    </div>
+                </div>
+
+            </div>
+        </div>
+
+        <!-- PRACTICAL QUICK ASSISTANCE DIRECTORY -->
+        <section class="bg-slate-800/90 border border-slate-700 rounded-xl p-5 shadow">
+            <h3 class="text-sm font-bold uppercase tracking-wider text-slate-300 mb-3 flex items-center space-x-2">
+                <span>📞</span>
+                <span>Immediate Operational Contacts & Desks</span>
+            </h3>
+            <div class="grid grid-cols-1 md:grid-cols-3 gap-4 text-xs">
+                <div class="bg-slate-900/80 p-3.5 rounded-lg border border-slate-700/70">
+                    <p class="text-blue-400 font-bold uppercase">24/7 G6 Operations Desk</p>
+                    <p class="text-white font-mono text-sm mt-1">DSN 314-537-1110</p>
+                    <p class="text-slate-400 mt-1">Commercial: +49 (0)611-143-537-1110</p>
+                    <p class="text-slate-500 mt-0.5">Use for: Tactical outage escalation, mission comms priority, and Joint Frequency deconfliction.</p>
+                </div>
+                <div class="bg-slate-900/80 p-3.5 rounded-lg border border-red-900/50">
+                    <p class="text-red-400 font-bold uppercase">Theater CSOC Emergency Line</p>
+                    <p class="text-red-300 font-mono text-sm mt-1">DSN 314-537-9911</p>
+                    <p class="text-slate-400 mt-1">Direct: +49 (0)611-143-537-9911</p>
+                    <p class="text-slate-500 mt-0.5">Use for: Active network intrusions, unauthorized software, or classified spillages (30-min window).</p>
+                </div>
+                <div class="bg-slate-900/80 p-3.5 rounded-lg border border-slate-700/70">
+                    <p class="text-emerald-400 font-bold uppercase">AESD-Europe User Help Desk</p>
+                    <p class="text-white font-mono text-sm mt-1">DSN 314-542-4357 (HELP)</p>
+                    <p class="text-slate-400 mt-1">Toll-Free Europe: 00800-0000-4357</p>
+                    <p class="text-slate-500 mt-0.5">Use for: SIPRNet/NIPRNet smartcards, Outlook access, password resets, and hardware ticketing.</p>
+                </div>
+            </div>
+        </section>
+
+    </main>
+
+    <!-- Footer -->
+    <footer class="bg-slate-950 border-t border-slate-800 text-slate-400 text-xs py-4">
+        <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 flex flex-col md:flex-row justify-between items-center gap-2">
+            <div>
+                <span>USAREUR-AF G6 Operations & Help Desk Platform</span>
+                <span class="mx-2">•</span>
+                <span>DoDI 8500.01 & AR 25-2 Compliant</span>
+            </div>
+            <div class="text-slate-500">
+                Classification: UNCLASSIFIED // CUI | Controlled by: USAREUR-AF G6
+            </div>
+        </div>
+    </footer>
+
+    <!-- Bottom Security Classification Banner -->
+    <div class="classification-banner">
+        UNCLASSIFIED // CONTROLLED UNCLASSIFIED INFORMATION (CUI)
+    </div>
+
+    <!-- CLIENT-SIDE SENTINEL-6 PRACTICAL GUIDANCE ENGINE -->
+    <script>
+        // Practical Actionable Knowledge Base
+        const g6KnowledgeBase = [
+            {
+                keywords: ["satcom", "sar", "gar", "satellite", "bandwidth", "wgs", "muos", "step"],
+                branch: "G6 C4 Operations (Tactical SATCOM)",
+                answer: "<strong>Practical Steps to Request SATCOM:</strong><br>1. Submit a Satellite Access Request (SAR) via the Joint Integrated SATCOM Tool (JIST) at least 30 days prior to mission start.<br>2. For short-notice missions (<72 hours), call the 24/7 G6 Operations Desk to obtain a verbal operational PIN, followed by an immediate emergency SAR upload.<br>3. Obtain your Gateway Access Authorization (GAA) from the Landstuhl or Patch Barracks STEP site prior to terminal bring-up.",
+                poc: "DSN: 314-537-1110 | satcom.usareur@army.mil",
+                linkText: "Open Communications (C4) Module",
+                linkUrl: "communications.html"
+            },
+            {
+                keywords: ["spill", "spillage", "classified", "incident", "breach", "compromise", "hack", "virus", "malware"],
+                branch: "Theater CSOC / Cyber Incident Desk",
+                answer: "<strong>IMMEDIATE ACTION PLAN (Classified Spillage):</strong><br>1. <strong>Do NOT power down or reboot</strong> the computer (preserves memory forensics).<br>2. <strong>Physically disconnect</strong> the ethernet cable and disable Wi-Fi/Bluetooth toggles.<br>3. Quarantine the room or machine to prevent unauthorized access.<br>4. Call the CSOC Emergency Line at <strong>DSN 314-537-9911</strong> within 30 minutes per CJCSI 6510.01.<br>5. Complete DA Form 5248-R / Incident Worksheet provided by the CSOC team.",
+                poc: "EMERGENCY LINE: DSN 314-537-9911",
+                linkText: "Call CSOC Emergency Line",
+                linkUrl: "tel:+496111435379911"
+            },
+            {
+                keywords: ["firewall", "port", "ppsm", "protocol", "exemption", "block", "acl", "traffic"],
+                branch: "G6 Networks & Boundary Management",
+                answer: "<strong>How to Request a Firewall Exemption:</strong><br>1. Check if the port and protocol are listed in the DISA PPSM Central Registry.<br>2. Complete the USAREUR-AF PPSM Exemption Worksheet specifying source/destination IP, subnet, port, and operational justification.<br>3. Obtain endorsement from your Battalion/Brigade S6 (O-5 or above).<br>4. Submit the package to the G6 Networks Boundary team. Standard turnaround is 5-7 business days.",
+                poc: "DSN: 314-537-2240 | ppsm.usareur@army.mil",
+                linkText: "Download PPSM Exemption Worksheet",
+                linkUrl: "#"
+            },
+            {
+                keywords: ["account", "password", "token", "nipr", "sipr", "cac", "pki", "reset", "aesd"],
+                branch: "Enterprise Service Desk (AESD-Europe)",
+                answer: "<strong>Practical Account Setup & Resets:</strong><br>1. <strong>Password / PIN Lockout:</strong> Contact AESD-Europe at DSN 314-542-4357.<br>2. <strong>New SIPRNet Token:</strong> Submit a DD Form 2875 (SAAR) signed by your supervisor and security manager (confirming Secret clearance verification in DISS).<br>3. <strong>Cyber Awareness Requirement:</strong> Ensure your DoD Cyber Awareness Challenge certificate is dated within the last 365 days.",
+                poc: "DSN: 314-542-4357 (HELP) | AESD-Europe",
+                linkText: "Submit AESD Ticket",
+                linkUrl: "#"
+            },
+            {
+                keywords: ["comsec", "kmi", "crypto", "key", "skld", "pyq-10", "cipher", "vault"],
+                branch: "Theater COMSEC Management Office (TCMO)",
+                answer: "<strong>Requesting Cryptographic Material:</strong><br>1. Ensure your unit COMSEC account custodian is formally appointed on DA Form 1687.<br>2. Submit key transfer orders via the Key Management Infrastructure (KMI) Client at least 14 days prior to exercise lock.<br>3. Emergency fills for SKL (AN/PYQ-10) devices must be conducted in person at the Clay Kaserne COMSEC vault with two-person integrity (TPI).",
+                poc: "DSN: 314-537-1115 | comsec.usareur@army.mil",
+                linkText: "Open Communications Module (COMSEC Tab)",
+                linkUrl: "communications.html"
+            },
+            {
+                keywords: ["rmf", "ato", "emass", "authorization", "package", "security control"],
+                branch: "G6 Information Assurance / Compliance",
+                answer: "<strong>Practical Path to System ATO (Authority to Operate):</strong><br>1. Register system package in Army eMASS under the USAREUR-AF tree.<br>2. Implement and validate applicable DISA STIGs; generate SCAP and Nessus scan results.<br>3. Coordinate with your Information System Security Manager (ISSM) for initial control inheritance review.<br>4. Submit package through Security Control Assessor (SCA) for Authorizing Official (AO) decision.",
+                poc: "DSN: 314-537-3315 | rmf.usareur@army.mil",
+                linkText: "Access Army eMASS Portal",
+                linkUrl: "#"
+            },
+            {
+                keywords: ["cui", "marking", "unclassified", "controlled", "distribution"],
+                branch: "G6 OPSEC & CUI Program",
+                answer: "<strong>Quick CUI Marking Guide:</strong><br>• <strong>Header & Footer:</strong> Bold, centered: <code>CUI</code> or <code>CONTROLLED UNCLASSIFIED INFORMATION</code>.<br>• <strong>Category Designation:</strong> Use <code>CUI // SP-CTI</code> for controlled technical/signal data.<br>• <strong>Cover Sheet:</strong> Attach Standard Form 901 (SF-901) for printed documents.<br>• <strong>Distribution:</strong> Always include the authorized Distribution Statement (e.g., Distribution B, C, or D).",
+                poc: "DSN: 314-537-4400 | opsec.usareur@army.mil",
+                linkText: "View DoD CUI Registry Guidelines",
+                linkUrl: "#"
+            }
+        ];
+
+        function fillQuery(text) {
+            document.getElementById('ai-query-input').value = text;
+            handleUserQuery();
+        }
+
+        function handleUserQuery() {
+            const query = document.getElementById('ai-query-input').value.trim().toLowerCase();
+            const container = document.getElementById('ai-response-container');
+            const responseText = document.getElementById('ai-response-text');
+            const actionButtons = document.getElementById('ai-action-buttons');
+            const badge = document.getElementById('response-badge');
+
+            if (!query) return;
+
+            container.classList.remove('hidden');
+            responseText.innerHTML = '<span class="text-slate-400 italic">Searching practical USAREUR-AF G6 workflows...</span>';
+            actionButtons.innerHTML = '';
+
+            setTimeout(() => {
+                let match = null;
+                let highestScore = 0;
+
+                g6KnowledgeBase.forEach(item => {
+                    let score = 0;
+                    item.keywords.forEach(kw => {
+                        if (query.includes(kw)) score += 1;
+                    });
+                    if (score > highestScore) {
+                        highestScore = score;
+                        match = item;
+                    }
+                });
+
+                if (match && highestScore > 0) {
+                    badge.textContent = `Practical Guide: ${match.branch}`;
+                    badge.className = "text-xs text-blue-400 font-mono font-semibold";
+
+                    responseText.innerHTML = `
+                        <div class="text-slate-200">${match.answer}</div>
+                        <p class="text-xs text-slate-300 font-mono mt-3 bg-slate-900/90 p-2.5 rounded border border-slate-700">
+                            <strong>Direct Contact / Desk:</strong> ${match.poc}
+                        </p>
+                    `;
+
+                    actionButtons.innerHTML = `
+                        <a href="${match.linkUrl}" class="bg-blue-600 hover:bg-blue-500 text-white font-bold py-1.5 px-3 rounded text-xs transition-colors">
+                            ${match.linkText}
+                        </a>
+                        <button onclick="document.getElementById('ai-response-container').classList.add('hidden')" class="bg-slate-700 hover:bg-slate-600 text-slate-300 py-1.5 px-3 rounded text-xs">
+                            Close
+                        </button>
+                    `;
+                } else {
+                    badge.textContent = "General G6 Support";
+                    badge.className = "text-xs text-amber-400 font-mono";
+
+                    responseText.innerHTML = `
+                        <p>No specific automated workflow was matched for that term. For immediate assistance with any G6 need:</p>
+                        <ul class="list-disc ml-5 mt-1 text-slate-300 space-y-1">
+                            <li><strong>Mission & Tactical Issues:</strong> Call the 24/7 G6 Operations Desk at <strong>DSN 314-537-1110</strong>.</li>
+                            <li><strong>Account, Hardware, or Password Issues:</strong> Call AESD-Europe at <strong>DSN 314-542-4357 (HELP)</strong>.</li>
+                            <li><strong>Suspected Cyber Incident or Spillage:</strong> Call CSOC immediately at <strong>DSN 314-537-9911</strong>.</li>
+                        </ul>
+                    `;
+
+                    actionButtons.innerHTML = `
+                        <a href="tel:+496111435371110" class="bg-blue-600 hover:bg-blue-500 text-white font-bold py-1.5 px-3 rounded text-xs">
+                            Call G6 Operations Center
+                        </a>
+                        <button onclick="document.getElementById('ai-response-container').classList.add('hidden')" class="bg-slate-700 hover:bg-slate-600 text-slate-300 py-1.5 px-3 rounded text-xs">
+                            Dismiss
+                        </button>
+                    `;
+                }
+            }, 250);
+        }
+    </script>
+</body>
+</html>
